@@ -21,38 +21,40 @@ namespace Lucky_Numbers
 
             int highestNum = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Now please enter the first number.");
-            int firstGuess = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Please enter the second number.");
-            int secondGuess = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Please enter the third number.");
-            int thirdGuess = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Please enter the fourth number.");
-            int fourthGuess = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Please enter the fifth number.");
-            int fifthGuess = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Please enter the sixth number.");
-            int sixthGuess = int.Parse(Console.ReadLine());
-
             int[] userGuesses = new int[6];
-                      
+
             for (int i = 0; i < userGuesses.Length; i++)
             {
-                userGuesses[i] = int.Parse(Console.ReadLine()); 
-               
+                Console.WriteLine("Please enter a number within the range");
+                userGuesses[i] = int.Parse(Console.ReadLine());
+
+                while(userGuesses[i] < lowestNum || userGuesses[i] > highestNum)
+                {
+                    Console.WriteLine("Please enter a valid number.");
+                    userGuesses[i] = int.Parse(Console.ReadLine());
+                }
+
+
             }
-            
+
+            // Part 2
 
 
+            int[] generatedNumbers = new int[6];
+            Random rand = new Random();
 
+            for (int j = 0; j < generatedNumbers.Length; j++)
+            {
+                int newNumber = rand.Next(lowestNum, highestNum) + 1;
+                generatedNumbers[j] = newNumber;
+             }
 
+          
 
-
+            for(int k = 0;  k < generatedNumbers.Length; k++)
+            {
+                Console.WriteLine("Lucky Number: " + generatedNumbers[k]);
+            }
         }
     }
 }
