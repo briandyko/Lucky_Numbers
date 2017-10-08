@@ -64,49 +64,99 @@ namespace Lucky_Numbers
             double threeNumJackpot = .45 * jackpot; // 45,000,000
             double twoNumJackpot = .25 * jackpot; // 25,000,000
             double oneNumJackpot = .00005 * jackpot;
+            double zeroNumJackpot = 0 * jackpot;
 
 
 
-            int choice = 0;
-            int[] testArray = new int[6];
-            testArray[choice] = userGuesses[choice];
+
+            int[] diff = userGuesses.Except(generatedNumbers).ToArray();
+            if (diff.Length == 0)
+            {
+                Console.WriteLine("You guessed 6 numbers correctly!");
+                Console.WriteLine("You won $" + jackpot + "!");
+            }
+            else if (diff.Length == 1)
+            {
+                Console.WriteLine("You guessed 5 numbers correctly!");
+                Console.WriteLine("You won $" + fiveNumJackpot + "!");
+            }
+            else if (diff.Length == 2)
+            {
+                Console.WriteLine("You guessed 4 numbers correctly!");
+                Console.WriteLine("You won $" + fourNumJackpot + "!");
+            }
+            else if (diff.Length == 3)
+            {
+                Console.WriteLine("You guessed 3 numbers correctly!");
+                Console.WriteLine("You won $" + threeNumJackpot + "!");
+            }
+            else if (diff.Length == 4)
+            {
+                Console.WriteLine("You guessed 2 numbers correctly!");
+                Console.WriteLine("You won $" + twoNumJackpot + "!");
+            }
+            else if (diff.Length == 5)
+            {
+                Console.WriteLine("You guessed 1 number correctly!");
+                Console.WriteLine("You won $" + oneNumJackpot + "!");
+            }
+            else if (diff.Length == 6)
+            {
+                Console.WriteLine("You guessed 0 numbers correctly!");
+                Console.WriteLine("You won $" + zeroNumJackpot + "!");
+            }
+
+        }
+    }
+}
+            //int choice = 0;
+            //int[] testArray = new int[6];
+
+            //testArray[choice] = userGuesses[choice];
 
 
-            if (testArray.Contains(choice))
-            {
-                choice++;
-            }
 
-            if (testArray.Contains(6) == generatedNumbers.Contains(6))
-            {
-                Console.WriteLine("You won!");
-            }
-            else if(userGuesses.Contains(5) == generatedNumbers.Contains(6))
-            {
-                Console.WriteLine("You won 5!");
-            }
-            else if (userGuesses.Contains(4) == generatedNumbers.Contains(6))
-            {
-                Console.WriteLine("You won 4!");
-            }
-            else if (userGuesses.Contains(3) == generatedNumbers.Contains(6))
-            {
-                Console.WriteLine("You won 3!");
-            }
-            else if (userGuesses.Contains(2) == generatedNumbers.Contains(6))
-            {
-                Console.WriteLine("You won 2!");
-            }
-            else if (userGuesses.Contains(1) == generatedNumbers.Contains(6))
-            {
-                Console.WriteLine("You won 1!");
-            }
-            else
-            {
-                Console.WriteLine("You lost!");
-            }
+            //if (testArray.Contains(0))
+            //{
+            //    choice++;
+            //}
 
-           
+            //if (testArray.Contains(6) == generatedNumbers.Contains(6))
+            //{
+            //    Console.WriteLine("You won!");
+            //}
+
+            //else if (userGuesses.Contains(5) == generatedNumbers.Contains(6))
+            //{
+            //    Console.WriteLine("You won 5!");
+            //}
+
+            //else if (userGuesses.Contains(4) == generatedNumbers.Contains(6))
+            //{
+            //    Console.WriteLine("You won 4!");
+            //}
+
+            //else if (userGuesses.Contains(3) == generatedNumbers.Contains(6))
+            //{
+            //    Console.WriteLine("You won 3!");
+            //}
+
+            //else if (userGuesses.Contains(2) == generatedNumbers.Contains(6))
+            //{
+            //    Console.WriteLine("You won 2!");
+            //}
+
+            //else if (userGuesses.Contains(1) == generatedNumbers.Contains(6))
+            //{
+            //    Console.WriteLine("You won 1!");
+            //}
+
+            //else
+            //{
+            //    Console.WriteLine("You lost!");
+            //}
+
+
 
 
             //if (testArray.Contains(6))
@@ -141,16 +191,11 @@ namespace Lucky_Numbers
 
             //int resultNum = 0;
 
-            //for (int m = 0; m < userGuesses.Length; m++)
+
+            //if (userGuesses[p] == generatedNumbers[m])
             //{
-            //    for (int p = 0; p < generatedNumbers.Length; p++)
-            //    {
-
-
-            //        if (userGuesses[p] == generatedNumbers[m])
-            //        {
-            //            resultNum++;
-            //        }
+            //    resultNum++;
+            //}
 
             //if (p == 6)
             //{
@@ -191,71 +236,76 @@ namespace Lucky_Numbers
             //    break;
             //}
 
-            //        {
-            //            Console.WriteLine("Why are you repeating?");
-            //            break;
-            //        }
-
-            //    }
-            //    //else if(generatedNumbers[m] - userGuesses[l] == 1)
-
-            //    //else if (generatedNumbers[m] - userGuesses[l] == 2)
-            //    //{
-            //    //    Console.WriteLine("You won " + fourNumJackpot);
-            //    //}
-            //    //else if (generatedNumbers[m] - userGuesses[l] == 3)
-            //    //{
-            //    //    Console.WriteLine("You won " + threeNumJackpot);
-            //    //}
-            //    //else if (generatedNumbers[m] - userGuesses[l] == 4)
-            //    //{
-            //    //    Console.WriteLine("You won " + twoNumJackpot);
-            //    //}
-            //    //else if (generatedNumbers[m] - userGuesses[l] == 5)
-            //    //{
-            //    //    Console.WriteLine("You won " + oneNumJackpot);
-            //    //}
 
 
-            //    //    }
-            //    //}
+        //    for (int m = 0; m < userGuesses.Length; m++)
+        //    {
+        //        for (int p = 0; p < generatedNumbers.Length; p++)
+        //        {
 
-            //    //        //if (generatedNumbers[m] == userGuesses[l])
-            //    //        //{
-            //    //        //    Console.WriteLine("You won " + jackpot + "!");
-            //    //        //}
-            //    //        //else if(generatedNumbers[m] == userGuesses[l - 1])
-            //    //        //{
-            //    //        //    Console.WriteLine("You won " + jackpot + "!");
-            //    //        //}
-            //    //        //else if (generatedNumbers[m] == userGuesses[l - 2])
-            //    //        //{
-            //    //        //    Console.WriteLine("You won " + jackpot + "!");
-            //    //        //}
-            //    //        //else if (generatedNumbers[m] == userGuesses[l - 3])
-            //    //        //{
-            //    //        //    Console.WriteLine("You won " + jackpot + "!");
-            //    //        //}
-            //    //        //else if (generatedNumbers[m] == userGuesses[l - 4])
-            //    //        //{
-            //    //        //    Console.WriteLine("You won " + jackpot + "!");
-            //    //        //}
-            //    //        //else if (generatedNumbers[m] == userGuesses[l - 5])
-            //    //        //{
-            //    //        //    Console.WriteLine("You won " + jackpot + "!");
-            //    //        //}
-            //    //        //else
-            //    //        //{
-            //    //        //    Console.WriteLine("You won nothing!!!");
-            //    //        //}
 
-            //    //    }
-            //    //}
+        //            if (generatedNumbers[m] == userGuesses[p])
+        //            {
+        //                Console.WriteLine("You won +" + jackpot);
+        //            }
+                
+        //        else if (generatedNumbers[m] - userGuesses[p] == 1)
+        //            {
+        //                Console.WriteLine("You won + " + fiveNumJackpot);
+        //            }
+        //        else if (generatedNumbers[m] - userGuesses[p] == 2)
+        //        {
+        //            Console.WriteLine("You won " + fourNumJackpot);
+        //        }
+        //        else if (generatedNumbers[m] - userGuesses[p] == 3)
+        //        {
+        //            Console.WriteLine("You won " + threeNumJackpot);
+        //        }
+        //        else if (generatedNumbers[m] - userGuesses[p] == 4)
+        //        {
+        //            Console.WriteLine("You won " + twoNumJackpot);
+        //        }
+        //        else if (generatedNumbers[m] - userGuesses[p] == 5)
+        //        {
+        //            Console.WriteLine("You won " + oneNumJackpot);
+        //        }
 
-            //    //Console.WriteLine("This is a test");
-            //        }
-            //}
 
-        }
-            }
-        }
+        //    }
+        //}
+
+        //        if (generatedNumbers[m] == userGuesses[p])
+        //        {
+        //            Console.WriteLine("You won " + jackpot + "!");
+        //        }
+        //        else if (generatedNumbers[m] == userGuesses[p - 1])
+        //        {
+        //            Console.WriteLine("You won " + jackpot + "!");
+        //        }
+        //        else if (generatedNumbers[m] == userGuesses[p - 2])
+        //        {
+        //            Console.WriteLine("You won " + jackpot + "!");
+        //        }
+        //        else if (generatedNumbers[m] == userGuesses[p - 3])
+        //        {
+        //            Console.WriteLine("You won " + jackpot + "!");
+        //        }
+        //        else if (generatedNumbers[m] == userGuesses[p - 4])
+        //        {
+        //            Console.WriteLine("You won " + jackpot + "!");
+        //        }
+        //        else if (generatedNumbers[m] == userGuesses[p - 5])
+        //        {
+        //            Console.WriteLine("You won " + jackpot + "!");
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("You won nothing!!!");
+        //        }
+
+        //    }
+        //}
+
+        //    //Console.WriteLine("This is a test");
+        //        }
+        //}
