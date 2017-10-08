@@ -10,13 +10,13 @@ namespace Lucky_Numbers
     {
         static void Main(string[] args)
         {
-            string playAgain;
+            string playAgain;            // declaring this variable to use in do-while loop that allows for play again feature.
 
             do
             {
                 // part 1
 
-                Console.WriteLine("Let's play a game. Think of a range of numbers. If you can guess the 6 numbers I am thinking of in your range, you will win $100,000,000.");
+                Console.WriteLine("Let's play a game. Think of a range of numbers. Within your chosen range, \n there are 6 very lucky numbers. If you can guess those 6 numbers, you will \n win a jackpot of $100,000,000.\n");
                 Console.WriteLine("What would you like the lowest number in the range to be?");
 
                 int lowestNum = int.Parse(Console.ReadLine());
@@ -27,12 +27,12 @@ namespace Lucky_Numbers
 
                 int[] userGuesses = new int[6];
 
-                for (int i = 0; i < userGuesses.Length; i++)
+                for (int i = 0; i < userGuesses.Length; i++)    // loop that populates userGuesses[]
                 {
-                    Console.WriteLine("Please enter a number within the range");
+                    Console.WriteLine("Please enter a number within your chosen range:");
                     userGuesses[i] = int.Parse(Console.ReadLine());
 
-                    while (userGuesses[i] < lowestNum || userGuesses[i] > highestNum)
+                    while (userGuesses[i] < lowestNum || userGuesses[i] > highestNum)  // valid number loop
                     {
                         Console.WriteLine("Please enter a valid number.");
                         userGuesses[i] = int.Parse(Console.ReadLine());
@@ -47,20 +47,19 @@ namespace Lucky_Numbers
                 int[] generatedNumbers = new int[6];
                 Random rand = new Random();
 
-                for (int j = 0; j < generatedNumbers.Length; j++)
+                for (int j = 0; j < generatedNumbers.Length; j++)   // random number generator loop that stores values in generatedNumbers[]
                 {
                     int newNumber = rand.Next(lowestNum, highestNum) + 1;
                     generatedNumbers[j] = newNumber;
                 }
 
-
-
-                for (int k = 0; k < generatedNumbers.Length; k++)
+                for (int k = 0; k < generatedNumbers.Length; k++)  // Lucky Number display loop
                 {
                     Console.WriteLine("Lucky Number: " + generatedNumbers[k]);
                 }
 
                 // part 3
+                // jackpot variables
 
                 double jackpot = 100000000;
                 double fiveNumJackpot = .75 * jackpot;
@@ -70,8 +69,9 @@ namespace Lucky_Numbers
                 double oneNumJackpot = .000005 * jackpot;
                 double zeroNumJackpot = 0 * jackpot;
 
+                // method used to calculate and display winnings
 
-                int[] diff = userGuesses.Except(generatedNumbers).ToArray();
+                int[] diff = userGuesses.Except(generatedNumbers).ToArray();;
                 if (diff.Length == 0)
                 {
                     Console.WriteLine("You guessed 6 numbers correctly!");
@@ -113,7 +113,7 @@ namespace Lucky_Numbers
                 Console.WriteLine("Would you like to play again?");
                 playAgain = Console.ReadLine().ToLower().Trim();
 
-            }  // closes do part of loop, starts while section for play again option
+            }  // closes do part of loop, starts while section for play again feature
 
             while (playAgain == "yes");
             
